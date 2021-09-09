@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expenlizer</title>
+    <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-firestore.js"></script>
+<script src="https://www.gstatic.com/firebasejs/live/3.1/firebase.js"></script>
+
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    
+    
+
+    <script src="js.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <center>
+
+        <nav class="navbar-inverse my_nav">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#my_navbar">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Expenlizer</a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="my_navbar">
+                <ul class="nav navbar-nav">
+                    <li><a href="#Home">Home</a></li>
+                    <li><a href="#Credits">Credits</a></li>
+                    <li><a href="#Debit">Debit</a></li>
+
+                    <li><a href="#whats_new">Whats New</a></li>
+
+                    <li><a href="#Glossary">Glossary</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <button id="logout" class="glyphicon glyphicon-log-out btn btn-danger login_logout"
+                        onclick="logout()" style="display: none;">Logout</button>
+                    <button id='login_log' class='btn btn-primary launch-modal' onclick='login()' ><img id='login_icons8'
+                            src='icons8-login-64.png'>Login</button>
+
+                </ul>
+            </div>
+
+        </nav>
+        <div class="page-header" id="Home">
+            <h1 class="text-capitalize btn btn-warning" id="header">Expenlizer</h1>
+        </div>
+        <h2 id="welcome" onclick="welcome()"></h2>
+        <h4>
+            <b>NOTE : </b> IF USERNAME IS NOT VISIABLE OR IT SHOWS NULL, CLICK ON THE TEXT ABOVE.
+        </h4>
+
+<div id="balance_div"></div>
+
+
+
+
+
+        <div class="container" id="Credits">
+
+            <div class="page-header">
+                <h2 class="text-capitalize">Credits</h2>
+                <div class="line"></div>
+            </div>
+            <div>
+
+                <h3>Did you receive,earn or save any money?</h3>
+                <h4>So don't waste time and type the amount below.This will be added to your account. Be honest.</h4>
+            </div>
+            <div id="credit"></div>
+            <p> .</p>
+            <div class="input-group input-group-lg">
+                <input placeholder="Enter The Amount" id="credit_input" type="number" class="form-control"
+                    aria-label="Large" aria-describedby="inputGroup-sizing-sm">
+
+            </div>
+            <p> .</p>
+            <button class="btn btn-info" onclick="credit()">Credit</button>
+        </div>
+
+
+
+
+
+
+
+
+
+        <div class="container" id="Debit">
+            <hr>
+            <div class="page-header">
+                <h2 class="text-capitalize">Debits</h2>
+                <div class="line"></div>
+            </div>
+            <div>
+
+                <h3>Did you spend any money?</h3>
+                <h4>So don't waste time and type the amount below.This will be deducted from your account. Be honest.
+                </h4>
+            </div>
+            <div id="debit"></div>
+            <p> .</p>
+            <div class="input-group input-group-lg">
+                <input placeholder="Enter The Amount" id="debit_input" type="number" class="form-control"
+                    aria-label="Large" aria-describedby="inputGroup-sizing-sm">
+
+            </div>
+            <p> .</p>
+            <button class="btn btn-info" onclick="debit()">Debit</button>
+        </div>
+        </div>
+
+
+
+
+
+
+
+
+        <div class="container" id="Glossary">
+            <hr>
+            <div class="page-header">
+                <h2 class="text-capitalize">Glossary</h2>
+                <div class="line"></div>
+                <h4>Hi there Buddy!!!</h4>
+                <h4>You need to get used to few words before you use this website.These might help you.</h4>
+            </div>
+
+
+
+
+
+
+            <ul class="list-group ">
+                <li class="list-group-item list-group-item-success col-lg-12 col-md-12 col-sm-12 col-xs-12 green">
+                    <h4><b>Credit:-</b></h4>
+                    <img class="img-responsive col-lg-5 col-md-5 col-sm-5 col-xs-12"
+                        src="piggy-bank-credit-glossary.gif">
+                    <p class="list-group-item-text col-lg-7 col-md-7 col-sm-7 col-xs-12 glossary">How do you define
+                        credit? This term has many meanings in the financial world, but credit is generally defined as a
+                        contract agreement in which a borrower receives a sum of money or something of value and repays
+                        the lender at a later date, generally with interest.</p>
+                    <p> .</p>
+                    <p class="list-group-item-text col-lg-7 col-md-7 col-sm-7 col-xs-12 glossary">Credit also may refer
+                        to the creditworthiness or credit history of an individual or a company. To an accountant, it
+                        refers to a bookkeeping entry that either decreases assets or increases liabilities and equity
+                        on a company's balance sheet.</p><br>
+                    <p> .</p>
+                    <p class="list-group-item-text col-lg-7 col-md-7 col-sm-7 col-xs-12 glossary"><b>KEY TAKEAWAYS</b>
+                    </p><br>
+                    <p class="list-group-item-text col-lg-7 col-md-7 col-sm-7 col-xs-12 glossary"><b>*</b>Credit is
+                        generally defined as an agreement between a lender and a borrower.</p><br>
+                    <p class="list-group-item-text col-lg-7 col-md-7 col-sm-7 col-xs-12 glossary"><b>*</b>Credit also
+                        refers to an individual or business' creditworthiness or credit history.</p><br>
+                    <p class="list-group-item-text col-lg-7 col-md-7 col-sm-7 col-xs-12 glossary"><b>*</b>In accounting,
+                        a credit may either decrease assets or increase liabilities as well as decrease expenses or
+                        increase revenue.</p><br>
+                    <p> .</p>
+                    <p class="list-group-item-text col-lg-7 col-md-7 col-sm-7 col-xs-12 glossary"><b>How Credit
+                            Works</b></p>
+                    <p class="list-group-item-text col-lg-7 col-md-7 col-sm-7 col-xs-12 glossary">In its first and most
+                        common-used definition, credit refers to an agreement to purchase a product or service with the
+                        express promise to pay for it later. This is known as buying on credit.</p>
+                    <p> .</p>
+                    <!-- <p class="list-group-item-text col-lg-7 col-md-7 col-sm-7 col-xs-12 glossary">The most common form of buying on credit today is via the use of credit cards. This introduces a middleperson to the credit agreement: the bank that issued the card repays the merchant in full and extends credit to the buyer, who may repay the bank over time.</p> -->
+
+
+
+
+
+                </li>
+                <li class="list-group-item list-group-item-warning col-lg-12 col-md-12 col-sm-12 col-xs-12 green">
+                    <h4><b>Debit</b></h4>
+                    <div class="">
+                        <p class="list-group-item-text col-lg-7 col-md-7 col-sm-7 col-xs-12 glossary1">A debit is an
+                            accounting entry that results in either an increase in assets or a decrease in liabilities
+                            on a
+                            company's balance sheet. In fundamental accounting, debits are balanced by credits, which
+                            operate in the exact opposite direction.</p>
+                        <p> .</p>
+                        <p class="list-group-item-text col-lg-7 col-md-7 col-sm-7 col-xs-12 glossary">For instance, if a
+                            firm takes out a loan to purchase equipment, it would debit fixed assets and at the same
+                            time
+                            credit a liabilities account, depending on the nature of the loan. The abbreviation for
+                            debit is
+                            sometimes "dr," which is short for "debtor."</p><br>
+                        <p> .</p>
+
+                        <p class="list-group-item-text col-lg-7 col-md-7 col-sm-7 col-xs-12 glossary"><b>How Debit
+                                Works</b>
+                        </p>
+                        <p class="list-group-item-text col-lg-7 col-md-7 col-sm-7 col-xs-12 glossary">A debit is a
+                            feature
+                            found in all double-entry accounting systems. In a standard journal entry, all debits are
+                            placed
+                            as the top lines, while all credits are listed on the line below debits. When using
+                            T-accounts,
+                            a debit is the left side of the chart while a credit is the right side.</p>
+                        <p> .</p>
+                        <p class="list-group-item-text col-lg-7 col-md-7 col-sm-7 col-xs-12 glossary">Debits and credits
+                            are
+                            utilized in the trial balance and adjusted trial balance to ensure all entries balance. The
+                            total dollar amount of all debits must equal the total dollar amount of all credits. In
+                            other
+                            words, finances must balance.</p>
+
+                    </div>
+                    <img class="img-responsive col-lg-5 col-md-5 col-sm-5 col-xs-12" id="debt_img" src="debit.gif">
+                </li>
+
+
+
+                <li class="list-group-item list-group-item-success col-lg-12 col-md-12 col-sm-12 col-xs-12 green">
+                    <h4><b>Online Banking</b></h4>
+                    <img class="img-responsive col-lg-5 col-md-5 col-sm-5 col-xs-12" src="pppp.gif">
+                    <p class="list-group-item-text col-lg-7 col-md-7 col-sm-7 col-xs-12 glossary">What Is Online
+                        Banking?
+                        Online banking allows a user to conduct financial transactions via the Internet. Online banking
+                        is also known as Internet banking or web banking.</p>
+                    <p> .</p>
+                    <p class="list-group-item-text col-lg-7 col-md-7 col-sm-7 col-xs-12 glossary">Online banking offers
+                        customers almost every service traditionally available through a local branch including
+                        deposits, transfers, and online bill payments. Virtually every banking institution has some form
+                        of online banking, available both on desktop versions and through mobile apps.</p><br>
+                    <p> .</p>
+
+                    <p class="list-group-item-text col-lg-7 col-md-7 col-sm-7 col-xs-12 glossary"><b>KEY TAKEAWAYS
+                        </b>
+                    </p>
+                    <p class="list-group-item-text col-lg-7 col-md-7 col-sm-7 col-xs-12 glossary"><b>*</b>Online banking
+                        allows a user to conduct financial transactions via the Internet.</p><br>
+                    <p class="list-group-item-text col-lg-7 col-md-7 col-sm-7 col-xs-12 glossary"><b>*</b>Consumers
+                        aren't required to visit a bank branch in order to complete most of their basic banking
+                        transactions.</p><br>
+                    <p class="list-group-item-text col-lg-7 col-md-7 col-sm-7 col-xs-12 glossary"><b>*</b>A customer
+                        needs a device, an Internet connection, and a bank card to register. Once registered, the
+                        consumer sets up a password to begin using the service.</p><br>
+                    <p> .</p>
+                    <p class="list-group-item-text col-lg-7 col-md-7 col-sm-7 col-xs-12 glossary">With online banking,
+                        consumers aren't required to visit a bank branch to complete most of their basic banking
+                        transactions. They can do all of this at their own convenience, wherever they want—at home, at
+                        work, or on the go.</p>
+                </li>
+
+
+            </ul>
+
+
+        </div>
+        <br>
+        <p> .</p>
+        <div class="copy_right">Developed by Mohnish</div>
+    </center>
+</body>
+
+</html>
